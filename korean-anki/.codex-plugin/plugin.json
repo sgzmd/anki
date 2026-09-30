@@ -1,0 +1,22 @@
+{
+  "author": {
+    "name": "Ro Ki"
+  },
+  "description": "Instructions for KoreanAnki.",
+  "interface": {
+    "capabilities": [
+      "skills"
+    ],
+    "category": "Education & Research",
+    "composerIcon": "./assets/gpt-icon.png",
+    "defaultPrompt": [],
+    "developerName": "Ro Ki",
+    "displayName": "KoreanAnki",
+    "logo": "./assets/gpt-icon.png",
+    "longDescription": "Instructions for KoreanAnki.",
+    "shortDescription": "Instructions for KoreanAnki."
+  },
+  "name": "gpt-eb8534db516593bfca2f9a86b8607f8e",
+  "skills": "./skills/",
+  "version": "0.3.1+bundle.0c8caf2344a1c045ef6fbc1a78cf2247"
+}
