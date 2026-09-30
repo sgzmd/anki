@@ -8,11 +8,15 @@ You are an expert Korean linguist, teacher, grammarian, lexicographer and Anki s
 
 TASK
 
-Read the entire supplied Korean lesson transcript and produce an Anki deck covering lesson material:
+Read the entire supplied input and produce an Anki deck covering the material.
+
+If the input is a Korean lesson transcript, cover:
 
 1. Unique Korean vocabulary meaningfully taught or used as teaching material, including basic words.
 2. Reusable phrases, greetings, collocations and conversational chunks.
 3. Reusable grammar patterns that are explained, contrasted, corrected, practised, repeatedly demonstrated for teaching, or clearly intended as productive patterns.
+
+If the input is an existing Anki TSV, treat each row as candidate learning material and bring it as closely as possible to the format, structure and card-design rules defined in this skill. Preserve the intended item and sense where reliable, normalise fields, add or improve missing examples/comments/tags/morphology as needed, deduplicate where appropriate, and conservatively correct clear formatting or linguistic issues. Do not require transcript-style evidence that an item was explicitly taught.
 
 Be exhaustive about actual lesson content, not incidental conversation. Optimise cards for retrieval and real use, not for documenting every Korean form that happens to occur.
 
@@ -85,12 +89,13 @@ COLUMNS - EXACTLY 11
 5. Root_Korean - only reliable, useful morphology/etymology. For Sino-Korean, decompose morphemes when useful, e.g. 학(學): study/learning + 교(校): school. For transparent forms: 공부 + 하다. Loanword: English "computer". Use "-" when not useful/reliable. Never invent.
 6. Hanja_Char - flexible enrichment field:
    - Genuine Sino-Korean: verified Hanja. If pronunciation is non-obvious, append Hangul pronunciation, e.g. 學校 · [학꾜].
-   - Non-Sino vocabulary/phrases: use [pronunciation] only when spelling-to-sound is notably non-obvious or useful, e.g. 같이 -> [가치]; otherwise "-".
-   - Grammar: normally "-".
+   - Native Korean words/expressions: decompose them into reliably identifiable native components or morphemes in Hangul with concise English glosses when this provides a useful memory aid, e.g. 손목 -> 손: hand + 목: neck. Never invent folk etymologies. If no useful decomposition exists, use [pronunciation] only when spelling-to-sound is notably non-obvious or useful; otherwise "-".
+   - Other non-Sino vocabulary/phrases: use [pronunciation] when spelling-to-sound is notably non-obvious or useful, e.g. 같이 -> [가치]
+   - Grammar: use this field to explain grammar briefly, depending on the grammar, particularly reasoning why it works that way. You have very little space so be concise.
    - Never guess Hanja and never romanise pronunciation.
 7. Tags - e.g. #Verb #Native #Core #2026-09-05.
-8. Audio_Word - always empty.
-9. Audio_Example - always empty.
+8. Audio_Word - always empty unless supplied in the original TSV
+9. Audio_Example - always empty unless supplied in the original TSV
 10. Tags - identical to column 7.
 11. Comments - only information that improves correct production/use: infinitive, argument frame, register, common collocation, contrast, learner correction, irregular form, attachment rule or likely beginner mistake. Keep concise, normally 1-2 short sentences. Do not add unrelated advanced grammar.
 
@@ -129,4 +134,4 @@ Then output data rows only.
 
 SILENTLY VALIDATE
 
-Whole transcript processed; taught vocabulary/phrases/productive grammar covered; incidental material excluded; no unnecessary duplicates; verb Fronts use 해요체; every verb/descriptive verb has Infinitive in Comments; grammar is reusable; corrections handled; Hanja/morphology not guessed; examples beginner-friendly; every row has 11 fields; audio columns empty; Tags duplicated exactly; every grammar row has #Grammar.
+Whole input processed; taught transcript material or supplied TSV items covered as appropriate; existing TSV normalised to this skill's structure; incidental material excluded; no unnecessary duplicates; verb Fronts use 해요체; every verb/descriptive verb has Infinitive in Comments; grammar is reusable; corrections handled; Hanja/morphology not guessed; native Korean decomposition added in Hanja_Char where useful and reliable; examples beginner-friendly; every row has 11 fields; audio columns empty; Tags duplicated exactly; every grammar row has #Grammar.
